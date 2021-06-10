@@ -1,44 +1,16 @@
-<%
-var posts = page.posts.data;
-var recentPosts = page.posts.data.slice(0, 6);
-%>
-
-<div class="container-lg">
-  <%- partial('_partial/intro') %>
-
-  <div class="blog-detail">
-    <%- partial('_partial/navbar-secondary', {nav_selected: 0}) %>
-
-    <div class="body-secondary">
-      <p class="right-title">Recent post</p>
-      <ul class="recent-post clearfix">
-        <% recentPosts.forEach(function(post){ %>
-        <li class="recent-post-item">
-          <div class="clearfix">
-            <h5 class="post-title text-ellipsis">
-              <i class="fa fa-bars"></i>
-              <a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
-            </h5>
-            <p class="post-description text-ellipsis desktop-only">
-              <%= post.content
-                      .replace(/<[^>]*>/ig, ' ')
-                      .substr(0, 50) %>
-            </p>
-            <p class="post-info desktop-only">
-              <span>
-                <% if(post.categories.data[0]){ %>
-                  <a class="category-link" href="<%= url_for(post.categories.data[0].path) %>"><i class="fa fa-folder-open"></i> <%= post.categories.data[0].name %></a>
-                <% } else { %>
-                  <i class="fa fa-folder-open"></i> <%= 'Uncategorized' %>
-                <% } %>
-              </span>
-              <span><i class="fa fa-tag"></i> <%= post.tags.length %> </span>
-            </p>
-          </div>
-        </li>
-        <% }) %>
-      </ul>
-      <%- partial('_partial/calendar') %>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  <script type="module" crossorigin src="/static/index.146f4044.js"></script>
+  <link rel="modulepreload" href="/static/vendor.91c512be.js">
+  <link rel="stylesheet" href="/static/index.29c9b04e.css">
+</head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
+</html>
