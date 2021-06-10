@@ -1,0 +1,48 @@
+name: deploy github pages
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 1. Checkout
+              uses: actions/checkout@master
+            - name: Submodule Checkout
+              uses: jwsi/submodule-checkout@v1
+
+            - name: 2. setup nodejs...
+
+              uses: actions/setup-node@v2
+              with:
+                node-version: '14'
+
+            - name: 3. install hexo..
+              run: |
+                  npm install hexo-cli -g
+                  npm install
+
+            - name: 4. install theme..
+              run: |
+                  cd themes/icarus
+                  npm install
+                  cd ../../
+
+                  cd themes/cactus
+                  npm install
+                  cd ../../
+
+            - name: 5. hexo build...
+              run: |
+                  hexo clean
+                  hexo g
+
+                  hexo g --config _config.cactus.yml
+
+            - name: 6. deploy github pages
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: public
