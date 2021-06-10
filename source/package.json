@@ -1,0 +1,13 @@
+{
+    "name": "hexo-theme-github",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {},
+    "hexo": {
+        "version": "5.4.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "hexo-pagination": "^2.0.3"
+    }
+}
