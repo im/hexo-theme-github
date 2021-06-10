@@ -18,31 +18,13 @@ jobs:
               with:
                 node-version: '14'
 
-            - name: 3. install hexo..
+            - name: 3. build
               run: |
-                  npm install hexo-cli -g
-                  npm install
-
-            - name: 4. install theme..
-              run: |
-                  cd themes/icarus
-                  npm install
-                  cd ../../
-
-                  cd themes/cactus
-                  npm install
-                  cd ../../
-
-            - name: 5. hexo build...
-              run: |
-                  hexo clean
-                  hexo g
-
-                  hexo g --config _config.cactus.yml
+                  npm run build
 
             - name: 6. deploy github pages
               uses: JamesIves/github-pages-deploy-action@3.7.1
               with:
                   ACCESS_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-                  BRANCH: gh-pages
-                  FOLDER: public
+                  BRANCH: main
+                  FOLDER: hexo-theme
