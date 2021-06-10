@@ -96,7 +96,7 @@ fs.mkdirSync(scriptsPath)
 fs.mkdirSync(sourcePath)
 
 copyFolder(distScriptPath, scriptsPath)
-copyFolder(themePath, sourcePath)
+copyFolder(themePath, outPath)
 fs.mkdirSync(sourceStaticPath)
 copyFolder(distStaticPath, sourceStaticPath)
 
