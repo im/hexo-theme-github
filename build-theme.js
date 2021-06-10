@@ -8,6 +8,7 @@ const outPath = path.join(__dirname, 'hexo-theme')
 const layoutPath = path.join(__dirname, 'hexo-theme/layout')
 const scriptsPath = path.join(__dirname, 'hexo-theme/scripts')
 const sourcePath = path.join(__dirname, 'hexo-theme/source')
+const themePath = path.join(__dirname, 'theme')
 const sourceStaticPath = path.join(__dirname, 'hexo-theme/source/static')
 
 function deleteFolder(path) {
@@ -93,9 +94,10 @@ fs.mkdirSync(outPath)
 fs.mkdirSync(layoutPath)
 fs.mkdirSync(scriptsPath)
 fs.mkdirSync(sourcePath)
-fs.mkdirSync(sourceStaticPath)
 
 copyFolder(distScriptPath, scriptsPath)
+copyFolder(themePath, sourcePath)
+fs.mkdirSync(sourceStaticPath)
 copyFolder(distStaticPath, sourceStaticPath)
 
 const indexContent = fs.readFileSync(indexPath)
