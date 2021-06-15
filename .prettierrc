@@ -2,5 +2,6 @@
     "tabWidth": 4,
     "eol": "lf",
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "jsxBracketSameLine": true
 }

@@ -8,6 +8,6 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "hexo-pagination": "^2.0.3"
+        "hexo-pagination": "^2.0.0"
     }
 }

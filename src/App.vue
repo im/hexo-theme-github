@@ -1,16 +1,17 @@
 <template>
-    <div>
-        <img alt="Vue logo" src="./assets/logo.png" />
+    <div data-color-mode="light">
+        <Head></Head>
         <router-view></router-view>
     </div>
 </template>
 
 <script lang="ts">
+import Head from 'components/tags/Head.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
     name: 'App',
-    components: {},
+    components: { Head },
 })
 </script>
 <style lang="stylus">
