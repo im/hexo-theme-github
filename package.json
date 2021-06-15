@@ -1,23 +1,23 @@
 {
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build1": "vue-tsc --noEmit && vite build && node build-theme.js",
-    "build": "vite build && node build-theme.js",
-    "serve": "vite preview"
-  },
-  "dependencies": {
-    "element-plus": "^1.0.2-beta.48",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.8"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.3",
-    "@vue/compiler-sfc": "^3.0.5",
-    "stylus": "^0.54.8",
-    "typescript": "^4.1.3",
-    "vite": "^2.3.5",
-    "vite-plugin-style-import": "^0.10.1",
-    "vue-tsc": "^0.0.24"
-  }
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build1": "vue-tsc --noEmit && vite build && node build-theme.js",
+        "build": "vite build && node build-theme.js",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "element-plus": "^1.0.2-beta.48",
+        "vue": "^3.0.5",
+        "stylus": "^0.54.8",
+        "vue-router": "^4.0.8"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^1.2.3",
+        "@vue/compiler-sfc": "^3.0.5",
+        "typescript": "^4.1.3",
+        "vite": "^2.3.5",
+        "vite-plugin-style-import": "^0.10.1",
+        "vue-tsc": "^0.0.24"
+    }
 }
