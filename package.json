@@ -2,11 +2,12 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && node build-theme.js",
+    "build1": "vue-tsc --noEmit && vite build && node build-theme.js",
+    "build": "vite build && node build-theme.js",
     "serve": "vite preview"
   },
   "dependencies": {
-    "element-plus": "^1.0.2-beta.46",
+    "element-plus": "^1.0.2-beta.48",
     "vue": "^3.0.5",
     "vue-router": "^4.0.8"
   },
