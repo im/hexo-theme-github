@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import Head from 'components/tags/Head.vue'
+import Head from 'components/tags/head.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
