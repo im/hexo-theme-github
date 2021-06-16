@@ -7,9 +7,9 @@
                 class="markdown-body article"
             ></article>
             <div class="avatar-post">
-                <a href="/">
-                    <img src="avatar.png" />
-                </a>
+                <!-- <a href="/">
+                    <img src="/avatar.png" />
+                </a> -->
             </div>
         </div>
     </div>

@@ -7,10 +7,10 @@
                         class="tooltipped tooltipped-s"
                         aria-label="Change your avatar"
                     >
-                        <img
+                        <!-- <img
                             class="avatar"
                             src="/avatar.png"
-                        />
+                        /> -->
                     </div>
                 </el-col>
                 <el-col :span="24" :xs="19">
