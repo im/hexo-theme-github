@@ -4,3 +4,5 @@ dist
 dist-ssr
 *.local
 hexo-theme
+public/api/*
+public/images/*

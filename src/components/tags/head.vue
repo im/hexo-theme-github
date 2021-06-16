@@ -54,14 +54,14 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, inject } from 'vue'
 export default defineComponent({
     name: 'Head',
     props: {},
     setup: () => {
-        const count = ref(0)
-        return { count }
-    },
+        const hexoConfig = inject('hexoConfig')
+        return { hexoConfig }
+    }
 })
 </script>
 

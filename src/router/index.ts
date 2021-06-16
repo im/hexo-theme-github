@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import HelloWorld from 'components/views/helloWorld.vue'
 import Layout from 'components/views/layout.vue'
 import Home from 'components/views/home/index.vue'
@@ -6,8 +6,9 @@ import Overview from 'components/views/home/pages/overview.vue'
 import Archives from 'components/views/home/pages/archives.vue'
 import Tags from 'components/views/home/pages/tags.vue'
 import Categories from 'components/views/home/pages/categories.vue'
+import Post from 'components/views/post/index.vue'
 
-const routerHistory = createWebHistory()
+const routerHistory = createWebHashHistory()
 
 const router = createRouter({
     history: routerHistory,
@@ -46,6 +47,11 @@ const router = createRouter({
         {
             path: '/helloworld',
             component: HelloWorld,
+        },
+        {
+            path: '/post/:slug',
+            name: 'post',
+            component: Post,
         },
     ],
 })

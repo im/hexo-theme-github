@@ -37,6 +37,10 @@ export default defineConfig({
                 find: 'style',
                 replacement: resolve('src/style'),
             },
+            {
+                find: 'api',
+                replacement: resolve('src/api'),
+            },
         ],
     },
 })

@@ -75,6 +75,8 @@ import { ref, defineComponent } from 'vue'
 export default defineComponent({
     name: 'Profile',
     props: {},
+    mounted () {
+    }
 })
 </script>
 
@@ -82,6 +84,8 @@ export default defineComponent({
 .profile
     padding 0 8px
     margin-top -32px
+    z-index 4
+    position: relative
 @media only screen and (max-width: 768px)
     .profile
         margin-top 0

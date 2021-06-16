@@ -3,34 +3,34 @@
         <el-col :span="6" class="hidden-xs-only"></el-col>
         <el-col :span="18" class="hidden-xs-only">
             <nav>
-                <a href="/overview" :class="setClass('overview')"
+                <a href="/#/overview" :class="setClass('overview')"
                     ><i class="iconfont icon-study"></i> Overview</a
                 >
-                <a href="/archives" :class="setClass('archives')"
+                <a href="/#/archives" :class="setClass('archives')"
                     ><i class="iconfont icon-repo"></i> Archives
                     <span class="counter">90</span></a
                 >
-                <a href="/categories" :class="setClass('categories')"
+                <a href="/#/categories" :class="setClass('categories')"
                     ><i class="iconfont icon-wenjianjia"></i> Categories</a
                 >
-                <a href="/tags" :class="setClass('tags')"
+                <a href="/#/tags" :class="setClass('tags')"
                     ><i class="iconfont icon-tags"></i> Tags</a
                 >
             </nav>
         </el-col>
         <el-col :span="18" class="hidden-sm-and-up">
             <nav>
-                <a href="/overview" :class="setClass('overview')"
+                <a href="/#/overview" :class="setClass('overview')"
                     ><i class="iconfont icon-study"></i> Overview</a
                 >
-                <a href="/archives" :class="setClass('archives')"
+                <a href="/#/archives" :class="setClass('archives')"
                     ><i class="iconfont icon-repo"></i> Archives
                     <span class="counter">90</span></a
                 >
-                <a href="/categories" :class="setClass('categories')"
+                <a href="/#/categories" :class="setClass('categories')"
                     ><i class="iconfont icon-wenjianjia"></i> Categories</a
                 >
-                <a href="/tags" :class="setClass('tags')"
+                <a href="/#/tags" :class="setClass('tags')"
                     ><i class="iconfont icon-tags"></i> Tags</a
                 >
             </nav>
@@ -65,6 +65,8 @@ export default defineComponent({
     border-bottom: 1px solid var(--color-border-primary)!important;
     position: sticky!important;
     top 0
+    z-index 3
+    background-color: var(--color-bg-primary)!important;
 .hidden-sm-and-up
     .line-nav
         margin-top 0
