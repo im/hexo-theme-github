@@ -6,7 +6,7 @@
                 <Content :data="data"></Content>
             </el-col>
             <el-col :span="6" :xs="24">
-                <Sidebar></Sidebar> 
+                <Sidebar></Sidebar>
             </el-col>
         </el-row>
     </main>
@@ -29,11 +29,23 @@ export default defineComponent({
             data: {},
         }
     },
-    async created() {
-        this.$nprogress.start()
-        const { slug } = this.$route.params
-        this.data = await fetchPostBySlug(slug)
-        this.$nprogress.done()
+    watch: {
+        '$route.params' () {
+            this.getData()
+        }
+    },
+    methods: {
+        async getData() {
+            this.$nprogress.start()
+            const { slug } = this.$route.params
+            const data = await fetchPostBySlug(slug)
+            console.log('this.data: ', data)
+            this.data = data
+            this.$nprogress.done()
+        },
+    },
+    created() {
+        this.getData()
     },
 })
 </script>

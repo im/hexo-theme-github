@@ -1,8 +1,8 @@
 <template>
     <div class="recent-posts">
         <div class="top">
-            <span>Popular repositories</span>
-            <span>Popular repositories</span>
+            <span>Recent posts</span>
+            <!-- <span>Popular repositories</span> -->
         </div>
         <el-row class="recent-posts-main">
             <el-col :span="12" :xs="24" v-for="post in posts" class="post-col">
@@ -45,7 +45,6 @@ export default defineComponent({
         async fetchPostsList(page) {
             const list = await fetchPostsList(1)
             this.posts = list.data.splice(0, 6)
-            console.log('this.posts: ', this.posts)
         },
     },
     mounted() {

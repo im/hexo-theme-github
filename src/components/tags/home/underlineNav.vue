@@ -8,13 +8,17 @@
                 >
                 <a href="/#/archives" :class="setClass('archives')"
                     ><i class="iconfont icon-repo"></i> Archives
-                    <span class="counter">90</span></a
+                    <span class="counter">{{ total.posts }}</span></a
                 >
                 <a href="/#/categories" :class="setClass('categories')"
-                    ><i class="iconfont icon-wenjianjia"></i> Categories</a
+                    ><i class="iconfont icon-wenjianjia"></i>Categories
+                    <span class="counter">{{ total.categories }}</span
+                    ></a
                 >
                 <a href="/#/tags" :class="setClass('tags')"
-                    ><i class="iconfont icon-tags"></i> Tags</a
+                    ><i class="iconfont icon-tags"></i>Tags
+                    <span class="counter">{{ total.tags }}</span
+                    ></a
                 >
             </nav>
         </el-col>
@@ -25,13 +29,17 @@
                 >
                 <a href="/#/archives" :class="setClass('archives')"
                     ><i class="iconfont icon-repo"></i> Archives
-                    <span class="counter">90</span></a
+                    <span class="counter">{{ total.posts }}</span></a
                 >
                 <a href="/#/categories" :class="setClass('categories')"
-                    ><i class="iconfont icon-wenjianjia"></i> Categories</a
+                    ><i class="iconfont icon-wenjianjia"></i>Categories
+                    <span class="counter">{{ total.categories }}</span
+                    ></a
                 >
                 <a href="/#/tags" :class="setClass('tags')"
-                    ><i class="iconfont icon-tags"></i> Tags</a
+                    ><i class="iconfont icon-tags"></i>Tags
+                    <span class="counter">{{ total.tags }}</span
+                    ></a
                 >
             </nav>
         </el-col>
@@ -42,10 +50,22 @@
 import { ref, defineComponent } from 'vue'
 export default defineComponent({
     name: 'underlineNav',
-    props: {},
+    inject: ['hexo'],
+    data() {
+        return {
+            themeConfig: this.hexo.themeConfig,
+            hexoConfig: this.hexo.hexoConfig,
+        }
+    },
     computed: {
         routeName() {
             return this.$route.name
+        },
+        profile() {
+            return this.themeConfig.profile || {}
+        },
+        total() {
+            return this.hexoConfig.total || {}
         },
     },
     methods: {

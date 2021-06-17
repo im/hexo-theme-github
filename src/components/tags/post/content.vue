@@ -1,15 +1,47 @@
 <template>
     <div class="container">
         <div class="box">
-            <div class="header"></div>
+            <div class="header">
+                <div class="left">
+                    <a href="/">{{ profile.nickname }}</a> posted on
+                    {{ updated }}
+                </div>
+                <div class="right"></div>
+            </div>
             <article
                 v-html="data.content"
                 class="markdown-body article"
             ></article>
             <div class="avatar-post">
-                <!-- <a href="/">
-                    <img src="/avatar.png" />
-                </a> -->
+                <a href="/">
+                    <img :src="profile.avatar" />
+                </a>
+            </div>
+        </div>
+        <div class="prev-next">
+            <div v-if="data.prev">
+                <router-link
+                    :to="{
+                        name: 'post',
+                        params: { slug: data.prev.slug },
+                    }"
+                    tag="a"
+                >
+                    <i class="iconfont icon-zuoxia-copy"></i>
+                    {{ data.prev.title }}
+                </router-link>
+            </div>
+            <div v-if="data.next">
+                <router-link
+                    :to="{
+                        name: 'post',
+                        params: { slug: data.next.slug },
+                    }"
+                    tag="a"
+                >
+                    {{ data.next.title }}
+                    <i class="iconfont icon-zuojiantou-right"></i>
+                </router-link>
             </div>
         </div>
     </div>
@@ -17,10 +49,31 @@
 
 <script lang="ts">
 import { ref, defineComponent, inject } from 'vue'
+import { getRelativeTimeFromNow, format } from '@/utils/date'
 export default defineComponent({
     name: 'content',
     props: ['data'],
-    setup: () => {},
+    inject: ['hexo'],
+    data() {
+        return {
+            themeConfig: this.hexo.themeConfig,
+            hexoConfig: this.hexo.hexoConfig,
+        }
+    },
+    computed: {
+        profile() {
+            return this.themeConfig.profile || {}
+        },
+        total() {
+            return this.hexoConfig.total || {}
+        },
+        created() {
+            return getRelativeTimeFromNow(this.data.date || new Date())
+        },
+        updated() {
+            return format(this.data.date || new Date())
+        },
+    },
 })
 </script>
 
@@ -28,17 +81,39 @@ export default defineComponent({
 .container
     margin-left 40px
     padding-left 16px
+    .prev-next
+        display flex
+        align-items: center
+        justify-content: space-between
+        line-height 30px
+        a
+            color:var(--color-text-link)!important
+            display flex
+            align-items: center
+            &:hover
+                color:var(--color-text-link)!important
+        .iconfont
+            font-size 12px
+            color: var(--color-text-primary)!important
+            transform: scale(0.8);
+            display: block;
     .header
         background-color: var(--color-box-bg-info);
         border-bottom: 1px solid var(--color-box-border-info);
-        display: flex;
-        align-items: center;
-        padding-right: 16px;
-        padding-left: 16px;
+        padding 8px 16px
         color: var(--color-text-secondary);
-        flex-direction: row-reverse;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
+        display flex
+        align-items: center
+        justify-content: space-between
+        a
+            font-weight 600
+            font-size 12px
+            color: var(--color-text-primary)!important
+            &:hover
+                color:var(--color-text-link)!important
+                text-decoration: underline
     .article
         padding 15px
         weight 100%

@@ -2,18 +2,30 @@
     <div class="top">
         <h1>
             <span class="title">{{ data.title }}</span>
-            <span class="tertiary">#000xx</span>
+            <span class="tertiary">#{{data.sort}}</span>
         </h1>
-        <span class="meta">opened this issue 29 days ago · 1 comment</span>
+        <span class="meta">Posted {{created}}</span>
     </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent, inject } from 'vue'
+import { getRelativeTimeFromNow, format } from '@/utils/date'
 export default defineComponent({
     name: 'top',
     props: ['data'],
-    setup: () => {},
+    inject: ['hexo'],
+    data() {
+        return {
+            themeConfig: this.hexo.themeConfig,
+            hexoConfig: this.hexo.hexoConfig,
+        }
+    },
+    computed: {
+        created () {
+            return getRelativeTimeFromNow(this.data.date || new Date())
+        }
+    }
 })
 </script>
 

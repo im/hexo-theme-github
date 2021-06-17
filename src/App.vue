@@ -13,16 +13,36 @@ import { defineComponent, reactive, provide } from 'vue'
 export default defineComponent({
     name: 'App',
     components: { Head },
-    setup() {
-        let data = reactive({})
-        provide('hexoConfig', data)
-        return { data }
+    provide() {
+        return {
+            hexo: this.hexo,
+        }
     },
+    data() {
+        return {
+            hexo: {
+                themeConfig: {},
+                hexoConfig: {},
+            },
+        }
+    },
+    // setup() {
+    //     const hexoConfig = reactive({})
+    //     const themeConfig = reactive({})
+    //     provide('hexoConfig', hexoConfig)
+    //     provide('themeConfig', themeConfig)
+    //     return { hexoConfig, themeConfig }
+    // },
     methods: {
         async fetchHexoConfig() {
             this.$nprogress.start()
-            const data = await fetchHexoConfig()
-            this.data = Object.assign(this.data, data)
+            const hexoConfig = await fetchHexoConfig()
+            console.log('hexoConfig: ', hexoConfig);
+            this.hexo.hexoConfig = Object.assign(this.hexo.hexoConfig, hexoConfig)
+            this.hexo.themeConfig = Object.assign(
+                this.hexo.themeConfig,
+                hexoConfig.theme_config
+            )
             this.$nprogress.done()
         },
     },
