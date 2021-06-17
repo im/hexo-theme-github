@@ -24,6 +24,10 @@
                     placeholder="Search or jump to…"
                 >
                     <template #default="{ item }">
+                        <span class="jump-to">
+                            Jump to
+                            <i class="iconfont icon-huiche"></i>
+                        </span>
                         <div class="search-title">
                             <i
                                 class="iconfont"
@@ -47,12 +51,12 @@
                 /> -->
                 <i class="search-key-slash">/</i>
             </label>
-            <nav>
+            <!-- <nav>
                 <a href="/" class="link">Pull requests</a>
                 <a href="/" class="link">Issues</a>
                 <a href="/" class="link">Marketplace</a>
                 <a href="/" class="link">Explore</a>
-            </nav>
+            </nav> -->
         </div>
         <div class="item">
             <div class="icon-item">
@@ -359,11 +363,11 @@ export default defineComponent({
             const data = await fetchSearch()
             this.searchData = data
         },
-        closeSearch () {
+        closeSearch() {
             this.$refs.search.inputRef.blur()
             this.$refs.search.close()
             this.$refs.search.handleClear()
-        }
+        },
     },
     mounted() {
         document.onkeydown = (e) => {
@@ -442,7 +446,7 @@ export default defineComponent({
         justify-content space-between
         align-items center
         overflow hidden
-        transition 0.4s
+        // transition 0.4s
         max-width 272px
         &:focus-within
             border-color var(--color-state-focus-border)
@@ -547,6 +551,23 @@ export default defineComponent({
     padding 0
     li
         border-bottom: 1px solid var(--color-border-primary);
+        position relative
+        .jump-to
+            border: 1px solid var(--color-border-primary);
+            color: var(--color-text-secondary);
+            border-radius 5px
+            font-size 12px
+            position absolute
+            right 10px
+            top calc(50% - 10px)
+            height 20px
+            padding 0 5px
+            line-height 20px
+            z-index 1
+            background-color #fff
+            opacity 0
+            .iconfont
+                font-size 12px
         em
             font-style: normal;
             background: #ffdd57;
@@ -567,12 +588,10 @@ export default defineComponent({
         .search-text
             font-size 12px
             padding-left 17px
-        &.highlighted
+        &.highlighted, &:hover
             background var(--color-text-link)!important
-            .search-text, .search-title
-                color: var(--color-pr-state-open-text);
-        &:hover
-            background var(--color-text-link)!important
+            .jump-to
+                opacity 1
             .search-text, .search-title
                 color: var(--color-pr-state-open-text);
 </style>
