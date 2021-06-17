@@ -9,7 +9,6 @@ module.exports = function (cfg, site) {
             ps = U.restful.posts_size,
             pc = Math.ceil(len / ps)
 
-        console.log('len: ', len, pc, ps)
         for (let i = 0; i < len; i += ps) {
             page_posts.push({
                 path: 'api/posts/' + Math.ceil((i + 1) / ps) + '.json',
