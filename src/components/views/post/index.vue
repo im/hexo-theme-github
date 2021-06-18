@@ -40,6 +40,7 @@ export default defineComponent({
             const { slug } = this.$route.params
             const data = await fetchPostBySlug(slug)
             console.log('this.data: ', data)
+            document.title = data.title
             this.data = data
             this.$nprogress.done()
         },

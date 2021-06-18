@@ -15,6 +15,7 @@ const router = createRouter({
         {
             path: '/',
             component: Home,
+            name: 'home',
             redirect: '/overview',
             children: [
                 {
@@ -28,12 +29,12 @@ const router = createRouter({
                     component: Archives,
                 },
                 {
-                    path: 'tags',
+                    path: 'tags/:slug?',
                     name: 'tags',
                     component: Tags,
                 },
                 {
-                    path: 'categories',
+                    path: 'categories/:slug?',
                     name: 'categories',
                     component: Categories,
                 },

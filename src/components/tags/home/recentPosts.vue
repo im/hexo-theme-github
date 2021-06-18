@@ -5,7 +5,13 @@
             <!-- <span>Popular repositories</span> -->
         </div>
         <el-row class="recent-posts-main">
-            <el-col :span="12" :xs="24" v-for="post in posts" class="post-col">
+            <el-col
+                :span="12"
+                :xs="24"
+                v-for="post in posts"
+                :key="post.slug"
+                class="post-col"
+            >
                 <div class="item">
                     <div class="box">
                         <!-- <a href="/" class="title">{{ post.title }}</a> -->
@@ -22,7 +28,28 @@
                         <div class="desc">
                             {{ post.text }}
                         </div>
-                        <div class="secondary">secondary</div>
+                        <div class="secondary">
+                            <router-link
+                                tag="a"
+                                :to="{ name: 'categories', params: {
+                                    slug: categories(post).slug
+                                } }"
+                                class="link"
+                                v-if="categories(post)"
+                            >
+                                <i class="iconfont icon-wenjianjia"></i>
+                                {{categories(post).name}}
+                            </router-link>
+                            <router-link
+                                tag="a"
+                                :to="{ name: 'tags' }"
+                                class="link"
+                                v-if="tags(post)"
+                            >
+                                <i class="iconfont icon-tags"></i>
+                                {{tags(post)}}
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </el-col>
@@ -42,8 +69,14 @@ export default defineComponent({
         }
     },
     methods: {
-        async fetchPostsList(page) {
-            const list = await fetchPostsList(1)
+        categories(post: any) {
+            return post.categories ? post.categories[0] : null
+        },
+        tags(post: any) {
+            return post.tags ? post.tags.length : null
+        },
+        async fetchPostsList(page: any) {
+            const list = await fetchPostsList(page)
             this.posts = list.data.splice(0, 6)
         },
     },
@@ -99,4 +132,25 @@ export default defineComponent({
             color: var(--color-text-secondary)!important;
             margin-bottom 16px
             margin-top 8px
+.secondary
+    display flex
+    flex-wrap wrap
+    font-size 14px
+    a
+        color: var(--color-text-secondary)!important;
+        white-space: nowrap!important;
+        display flex
+        align-items center
+        font-size 14px
+        margin-right  10px
+        &:hover
+            color: var(--color-text-link)!important;
+        span
+            font-weight bold
+            margin-right 3px
+
+        .iconfont
+            color inherit
+            font-size:14px
+            margin-right 3px
 </style>

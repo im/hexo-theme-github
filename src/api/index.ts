@@ -22,7 +22,29 @@ export async function fetchAllPost() {
 }
 
 export async function fetchSearch() {
-    return await fetch(`/api/search.json`).then(
+    return await fetch(`/api/search.json`).then(async (res) => await res.json())
+}
+
+export async function fetchAllCategories() {
+    return await fetch(`/api/categories.json`).then(
+        async (res) => await res.json()
+    )
+}
+
+export async function fetchCategorie(slug: string) {
+    return await fetch(`/api/categories/${slug}.json`).then(
+        async (res) => await res.json()
+    )
+}
+
+export async function fetchAllTags() {
+    return await fetch(`/api/tags.json`).then(
+        async (res) => await res.json()
+    )
+}
+
+export async function fetchTag(slug: string) {
+    return await fetch(`/api/tags/${slug}.json`).then(
         async (res) => await res.json()
     )
 }

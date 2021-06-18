@@ -1,9 +1,9 @@
 <template>
     <header class="header">
         <div class="item hidden-xs-only">
-            <a href="/" class="link">
+            <router-link tag="a" class="link" :to="{ name: 'home' }">
                 <i class="iconfont icon-huaban88 logo-icon"></i>
-            </a>
+            </router-link>
         </div>
         <div class="item hidden-sm-and-up">
             <i class="iconfont icon-bar1"></i>

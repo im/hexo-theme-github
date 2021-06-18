@@ -23,11 +23,22 @@
 import { ref, defineComponent, reactive } from 'vue'
 import UnderlineNav from 'components/tags/home/underlineNav.vue'
 import Profile from 'components/tags/home/profile.vue'
-import { fetchPostsList } from '@/api'
 export default defineComponent({
     components: {
         UnderlineNav,
         Profile,
+    },
+    inject: ['hexo'],
+    data() {
+        return {
+            themeConfig: this.hexo.themeConfig,
+            hexoConfig: this.hexo.hexoConfig,
+        }
+    },
+    mounted () {
+        if (this.hexoConfig.title) {
+            document.title = this.hexoConfig.title
+        }
     }
 })
 </script>

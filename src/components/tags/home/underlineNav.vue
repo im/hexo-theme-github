@@ -3,23 +3,37 @@
         <el-col :span="6" class="hidden-xs-only"></el-col>
         <el-col :span="18" class="hidden-xs-only">
             <nav>
-                <a href="/#/overview" :class="setClass('overview')"
-                    ><i class="iconfont icon-study"></i> Overview</a
+                <router-link
+                    tag="a"
+                    :to="{ name: 'overview' }"
+                    :class="setClass('overview')"
                 >
-                <a href="/#/archives" :class="setClass('archives')"
-                    ><i class="iconfont icon-repo"></i> Archives
-                    <span class="counter">{{ total.posts }}</span></a
+                    <i class="iconfont icon-study"></i> Overview
+                </router-link>
+                <router-link
+                    tag="a"
+                    :to="{ name: 'archives' }"
+                    :class="setClass('archives')"
                 >
-                <a href="/#/categories" :class="setClass('categories')"
-                    ><i class="iconfont icon-wenjianjia"></i>Categories
-                    <span class="counter">{{ total.categories }}</span
-                    ></a
+                    <i class="iconfont icon-repo"></i> Archives
+                    <span class="counter">{{ total.posts }}</span>
+                </router-link>
+                <router-link
+                    tag="a"
+                    :to="{ name: 'categories' }"
+                    :class="setClass('categories')"
                 >
-                <a href="/#/tags" :class="setClass('tags')"
-                    ><i class="iconfont icon-tags"></i>Tags
-                    <span class="counter">{{ total.tags }}</span
-                    ></a
+                    <i class="iconfont icon-wenjianjia"></i>Categories
+                    <span class="counter">{{ total.categories }}</span>
+                </router-link>
+                <router-link
+                    tag="a"
+                    :to="{ name: 'tags' }"
+                    :class="setClass('tags')"
                 >
+                    <i class="iconfont icon-tags"></i>Tags
+                    <span class="counter">{{ total.tags }}</span>
+                </router-link>
             </nav>
         </el-col>
         <el-col :span="18" class="hidden-sm-and-up">
@@ -33,13 +47,11 @@
                 >
                 <a href="/#/categories" :class="setClass('categories')"
                     ><i class="iconfont icon-wenjianjia"></i>Categories
-                    <span class="counter">{{ total.categories }}</span
-                    ></a
+                    <span class="counter">{{ total.categories }}</span></a
                 >
                 <a href="/#/tags" :class="setClass('tags')"
                     ><i class="iconfont icon-tags"></i>Tags
-                    <span class="counter">{{ total.tags }}</span
-                    ></a
+                    <span class="counter">{{ total.tags }}</span></a
                 >
             </nav>
         </el-col>
