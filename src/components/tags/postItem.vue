@@ -54,6 +54,8 @@ export default defineComponent({
 .post-item
     border-bottom: 1px solid var(--color-border-primary)
     padding 24px 0
+    &:first-child
+        padding-top 0
     &:last-child
         border-bottom: none
     .link

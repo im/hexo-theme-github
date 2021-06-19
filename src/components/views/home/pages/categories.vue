@@ -54,14 +54,16 @@ export default defineComponent({
     },
     methods: {
         async fetchAllCategories() {
+            this.$nprogress.start()
             const data = await fetchAllCategories()
-            console.log('data: ', data)
             this.data = data
+            this.$nprogress.done(true)
         },
         async fetchCategorie() {
+            this.$nprogress.start()
             const categorie = await fetchCategorie(this.slug)
             this.categorie = categorie
-            console.log('list: ', categorie)
+            this.$nprogress.done(true)
         },
         init() {
             this.slug ? this.fetchCategorie() : this.fetchAllCategories()

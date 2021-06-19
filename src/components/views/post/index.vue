@@ -2,12 +2,12 @@
     <main class="post-main">
         <Top :data="data"></Top>
         <el-row class="home-main">
-            <el-col :span="18" :xs="24">
+            <el-col :span="24" :xs="24">
                 <Content :data="data"></Content>
             </el-col>
-            <el-col :span="6" :xs="24">
+            <!-- <el-col :span="6" :xs="24">
                 <Sidebar></Sidebar>
-            </el-col>
+            </el-col> -->
         </el-row>
     </main>
 </template>
@@ -54,4 +54,5 @@ export default defineComponent({
 <style scoped lang="stylus">
 .post-main
     padding 0 24px
+    min-height 100%
 </style>

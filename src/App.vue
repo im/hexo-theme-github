@@ -1,5 +1,5 @@
 <template>
-    <div data-color-mode="light">
+    <div class="app-main" data-color-mode="light">
         <Head></Head>
         <router-view></router-view>
         <Foot></Foot>
@@ -42,7 +42,7 @@ export default defineComponent({
                 hexoConfig.theme_config
             )
             this.init()
-            this.$nprogress.done()
+            this.$nprogress.done(true)
         },
         init() {
             document.title = this.hexo.hexoConfig.title
@@ -61,4 +61,6 @@ export default defineComponent({
 </script>
 <style lang="stylus">
 @import 'style/app'
+#app, .app-main
+    height 100%
 </style>

@@ -95,7 +95,6 @@ export default defineComponent({
 .profile
     padding 0 8px
     margin-top -32px
-    z-index 4
     position: relative
 @media only screen and (max-width: 768px)
     .profile
@@ -118,6 +117,8 @@ export default defineComponent({
     width 100%
     height auto
     aspect-ratio: auto 260 / 260;
+    z-index 4
+    position relative
     // min-height:260px
     // min-width:260px
 .names {
